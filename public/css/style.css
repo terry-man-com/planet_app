@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+.index-wrapper table {
+    border-style: double;
+    border-color: black;
+}
+.index-wrapper th,td {
+    border-style: double;
+    border-color: black;
+}
+.create-wrapper label {
+    font-weight: 550;
+}
