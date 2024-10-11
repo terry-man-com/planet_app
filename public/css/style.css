@@ -11,3 +11,10 @@
 .create-wrapper label {
     font-weight: 550;
 }
+.error {
+    color: red;
+}
+.error ul {
+    margin-left: 20px;
+    padding: 0;
+}

@@ -15,6 +15,7 @@
             <h4>半径：{{ $planet->radius }}</h4>
             <h4>重量：{{ $planet->weight }}</h4>
         </div>
+        <a href="{{ route('planets.index') }}">戻る</a>
     </div>
 </body>
 </html>

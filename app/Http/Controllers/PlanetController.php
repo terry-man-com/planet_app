@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Planet;
-use Illuminate\Http\Request;
+use App\Http\Requests\PlanetRequest;
 
 class PlanetController extends Controller
 {
@@ -28,7 +28,7 @@ class PlanetController extends Controller
     }
 
     // 新規投稿（store）データベースに保存処理
-    public function store(Request $request)
+    public function store(PlanetRequest $request)
     {
         $planet = new Planet;
 
@@ -38,6 +38,37 @@ class PlanetController extends Controller
         $planet->weight = $request->weight;
 
         $planet->save();
+
+        return redirect('/planets');
+    }
+
+    // 編集画面（edit）ページ表示
+    public function edit($id)
+    {
+        $planet = Planet::find($id);
+        return view('planets.edit', ['planet' => $planet]);
+    }
+
+    // 編集を更新（update）
+    public function update(PlanetRequest $request, $id)
+    {
+        $planet = Planet::find($id);
+
+        $planet->name = $request->name;
+        $planet->english_name = $request->english_name;
+        $planet->radius = $request->radius;
+        $planet->weight = $request->weight;
+
+        $planet->save();
+
+        return redirect('/planets');
+    }
+
+    // 削除（destroy）
+    public function destroy($id)
+    {
+        $planet = Planet::find($id);
+        $planet->delete();
 
         return redirect('/planets');
     }
